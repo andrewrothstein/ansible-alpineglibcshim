@@ -1,0 +1,14 @@
+[
+  {
+    "OS": "alpine",
+    "OS_VER": "3.16"
+  },
+  {
+    "OS": "alpine",
+    "OS_VER": "3.17"
+  },
+  {
+    "OS": "alpine",
+    "OS_VER": "edge"
+  }
+]
