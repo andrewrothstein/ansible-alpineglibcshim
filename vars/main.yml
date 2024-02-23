@@ -2,8 +2,9 @@
 alpine_glibc_shim_key_url: '{{ alpine_glibc_shim_key_mirror }}/{{ alpine_glibc_shim_key }}'
 alpine_glibc_shim_key_path: /etc/apk/keys/{{ alpine_glibc_shim_key }}
 alpine_glibc_shim_mirror_ver: '{{ alpine_glibc_shim_mirror }}/{{ alpine_glibc_shim_ver }}'
-alpine_glibc_shim_dflt_pkg_prefix: glibc
+alpine_glibc_shim_dflt_pkg_prefix:
+  - glibc
 alpine_glibc_shim_locale_pkg_prefixes:
   - glibc-bin
   - glibc-i18n
-alpine_glibc_shim_pkg_prefixes: '{{ [alpine_glibc_shim_dflt_pkg_prefix] + alpine_glibc_shim_locale_pkg_prefixes if alpine_glibc_shim_generate_locale.enabled else [] }}'
+alpine_glibc_shim_pkg_prefixes: '{{ alpine_glibc_shim_dflt_pkg_prefix + (alpine_glibc_shim_locale_pkg_prefixes if alpine_glibc_shim_generate_locale.enabled else []) }}'
