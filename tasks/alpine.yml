@@ -58,7 +58,7 @@
   become_user: root
   with_items: '{{ alpine_glibc_shim_pkg_prefixes }}'
   ansible.builtin.file:
-    path: '{{ alpine_glibc_shim_tmp_dir | default("/tmp")/{{ item }}-{{ alpine_glibc_shim_ver }}.apk'
+    path: '{{ alpine_glibc_shim_tmp_dir | default("/tmp") }}/{{ item }}-{{ alpine_glibc_shim_ver }}.apk'
     state: absent
 
 - name: Cleanup...
