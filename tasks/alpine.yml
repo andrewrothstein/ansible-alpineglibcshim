@@ -41,9 +41,10 @@
     {{ alpine_glibc_shim_generate_locale.i }}.{{ alpine_glibc_shim_generate_locale.f -}}
   changed_when: false
 
-- name: Template default local for sh
+- name: Add LANG to login shell
   become: true
   become_user: root
+  when:
   with_items:
     - f: locale.sh
       d: /etc/profile.d
