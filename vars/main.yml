@@ -6,4 +6,4 @@ alpine_glibc_shim_dflt_pkg_prefix: glibc
 alpine_glibc_shim_locale_pkg_prefixes:
   - glibc-bin
   - glibc-i18n
-alpine_glibc_shim_pkg_prefixes: '{% ([alpine_glibc_shim_dflt_pkg_prefix] + alpine_glibc_shim_locale_pkg_prefixes) if alpine_glibc_shim_generate_locale.enabled else [alpine_glibc_shim_dflt_pkg_prefix] %}'
+alpine_glibc_shim_pkg_prefixes: '{% [alpine_glibc_shim_dflt_pkg_prefix] + alpine_glibc_shim_locale_pkg_prefixes if alpine_glibc_shim_generate_locale.enabled else [] %}'
