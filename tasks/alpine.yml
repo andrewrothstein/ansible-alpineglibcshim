@@ -33,7 +33,12 @@
 - name: Fix locales...
   become: true
   become_user: root
-  ansible.builtin.command: /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
+  when: alpine_glibc_shim_generate_locale.enabled
+  ansible.builtin.command: >-
+    /usr/glibc-compat/bin/localedef
+    -i {{ alpine_glibc_shim_generate_locale.i }}
+    -f {{ alpine_glibc_shim_generate_locale.f }}
+    {{ alpine_glibc_shim_generate_locale.i }}.{{ alpine_glibc_shim_generate_locale.f -}}
   changed_when: false
 
 - name: Template default local for sh

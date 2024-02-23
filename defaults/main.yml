@@ -3,10 +3,10 @@ alpine_glibc_shim_key_mirror: https://alpine-pkgs.sgerrand.com
 alpine_glibc_shim_key: sgerrand.rsa.pub
 alpine_glibc_shim_mirror: https://github.com/sgerrand/alpine-pkg-glibc/releases/download
 alpine_glibc_shim_ver: '2.35-r1'
-alpine_glibc_shim_pkg_prefixes:
-  - glibc
-  - glibc-bin
-  - glibc-i18n
+alpine_glibc_shim_generate_locale:
+  enabled: false
+  i: en_US
+  f: UTF-8
 alpine_glibc_shim_checksums:
   '2.26-r0':
     # https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.26-r0/glibc-2.26-r0.apk
