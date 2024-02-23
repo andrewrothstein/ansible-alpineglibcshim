@@ -1,4 +1,6 @@
 ---
-- name: fix alpine
-  when: ansible_os_family == 'Alpine' and ansible_architecture == "x86_64"
-  include_tasks: alpine.yml
+- name: Shim glibc on Alpine
+  when:
+    - ansible_os_family == 'Alpine'
+    - ansible_architecture == "x86_64"
+  ansible.builtin.include_tasks: alpine.yml
