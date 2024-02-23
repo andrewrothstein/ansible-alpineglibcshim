@@ -53,11 +53,18 @@
     dest: '{{ item.d }}/{{ item.f }}'
     mode: '{{ item.m }}'
 
+- name: Cleaning up v{{ alpine_glibc_shim_ver }} pkgs...
+  become: true
+  become_user: root
+  with_items: '{{ alpine_glibc_shim_pkg_prefixes }}'
+  ansible.builtin.file:
+    path: '{{ alpine_glibc_shim_tmp_dir | default("/tmp")/{{ item }}-{{ alpine_glibc_shim_ver }}.apk'
+    state: absent
+
 - name: Cleanup...
   become: true
   become_user: root
   with_items:
-    - glibc-i18n
     - .build-dependencies
   ansible.builtin.command: apk del {{ item }}
   changed_when: false
