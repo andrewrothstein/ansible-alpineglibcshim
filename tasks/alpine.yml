@@ -35,6 +35,7 @@
   become_user: root
   ansible.builtin.command: /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8
   ignore_errors: true
+  changed_when: false
 
 - name: Template default local for sh
   become: true
