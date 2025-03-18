@@ -33,18 +33,18 @@
 - name: Fix locales...
   become: true
   become_user: root
-  when: alpine_glibc_shim_generate_locale.enabled
+  when: alpine_glibc_shim_generate_locale.enabled | bool
   ansible.builtin.command: >-
     /usr/glibc-compat/bin/localedef
     -i {{ alpine_glibc_shim_generate_locale.i }}
     -f {{ alpine_glibc_shim_generate_locale.f }}
-    {{ alpine_glibc_shim_generate_locale.i }}.{{ alpine_glibc_shim_generate_locale.f -}}
+    {{ alpine_glibc_shim_generate_locale.i }}.{{ alpine_glibc_shim_generate_locale.f }}
   changed_when: false
 
 - name: Add LANG to login shell
   become: true
   become_user: root
-  when:
+  when: alpine_glibc_shim_generate_locale.enabled | bool
   with_items:
     - f: locale.sh
       d: /etc/profile.d
