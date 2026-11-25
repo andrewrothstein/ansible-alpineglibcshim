@@ -1,0 +1,6 @@
+---
+- name: Installing gcompat...
+  become: true
+  become_user: root
+  ansible.builtin.command: apk add --no-cache gcompat
+  changed_when: false
