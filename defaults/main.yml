@@ -1,4 +1,7 @@
 ---
+# gcompat: Alpine's own glibc compatibility layer (default, all architectures)
+# sgerrand: third-party glibc build (unmaintained since 2023, x86_64 only)
+alpine_glibc_shim_provider: gcompat
 alpine_glibc_shim_key_mirror: https://alpine-pkgs.sgerrand.com
 alpine_glibc_shim_key: sgerrand.rsa.pub
 alpine_glibc_shim_mirror: https://github.com/sgerrand/alpine-pkg-glibc/releases/download

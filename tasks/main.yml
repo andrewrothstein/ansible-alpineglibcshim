@@ -1,6 +1,13 @@
 ---
-- name: Shim glibc on Alpine
+- name: Install gcompat on Alpine
   when:
     - ansible_os_family == 'Alpine'
+    - alpine_glibc_shim_provider == 'gcompat'
+  ansible.builtin.include_tasks: gcompat.yml
+
+- name: Shim glibc on Alpine with sgerrand/alpine-pkg-glibc
+  when:
+    - ansible_os_family == 'Alpine'
+    - alpine_glibc_shim_provider == 'sgerrand'
     - ansible_architecture == "x86_64"
   ansible.builtin.include_tasks: alpine.yml
